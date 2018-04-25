@@ -29,23 +29,30 @@ class App extends Component {
 
   handleSubmit(submit){
     submit.preventDefault();
-    console.log(this.state.name);
   }
   modeChanger(mode){
-    console.log(mode);
-    if (mode === "trivia"){
-      this.setState({
-      mode:"trivia"
-      })
-    }else if(mode === "winner"){
-      this.setState({
-      mode:"winner"
-      })
-    }else{
-      this.setState({
-      mode:"user"
-      })
-    }
+    let modetype =[ "trivia","winner","user"]
+
+    modetype.forEach((e)=>{
+      if(mode === e){
+        this.setState({
+           mode: e
+        })
+      }
+    })
+    // if (mode === "trivia"){
+    //   this.setState({
+    //   mode:"trivia"
+    //   })
+    // }else if(mode === "winner"){
+    //   this.setState({
+    //   mode:"winner"
+    //   })
+    // }else{
+    //   this.setState({
+    //   mode:"user"
+    //   })
+    // }
     console.log(this.state.mode)
   }
 
