@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import data from './data/questionare'
 import UseForm from './components/Useform';
 import QuestionContainer from './components/QuestionContainer'
 import Winner from './components/Winner'
@@ -10,8 +9,8 @@ class App extends Component {
     super();
     this.state = {
       text: '',
-      inputText: '',
-      mode:'view'};
+      mode:'view', 
+    };
     
   }
 
@@ -33,15 +32,20 @@ class App extends Component {
   renderView() {
     if(this.state.mode === 'view') {
       return (
+        <div>
         <UseForm
           value={this.state.text}
           handleSaveItem={this.handleMode.bind(this)}
           handleChange={this.handleChange.bind(this)}/>
-         
+         </div>
       );
     } else {
       return (
-         <QuestionContainer/>
+        <div >
+        <h1>{this.state.text} You can Be Llama</h1>
+         <QuestionContainer
+         />
+         </div>
           
       );
     }
@@ -49,7 +53,7 @@ class App extends Component {
   
   render () {
     return (
-      <div>
+      <div className="container">
         {this.renderView()}
       </div>
     );

@@ -37,3 +37,5 @@ const questionare = [
         "answer2":  "100 repetitions they are stupid",
         "answer3":  "0 repetitions"}
 ]
+
+export default questionare;

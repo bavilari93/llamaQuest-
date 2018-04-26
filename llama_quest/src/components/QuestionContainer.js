@@ -1,11 +1,29 @@
 import React, {Component} from 'react'; 
+import TriviaQuestion from './TriviaQuestion'
+import data from '../data/questionare'
 
 class QuestionContainer extends Component{
+	constructor(){
+		super();
+		this.state={
+
+		}
+	}
+
+	renderData(e){
+			return e.map((el, index) =>{
+			return(
+				<div 
+				key={index}>
+				<TriviaQuestion data={el}/> 
+				</div>
+				)
+		})
+	}
 	render(){
 		return(
 			<div>
-			<h1>this is trivia</h1>
-			<p>that ever puff</p>
+			{this.renderData(data)}
 			</div>
 			)
 	}

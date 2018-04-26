@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 class UseForm extends Component{
 	render(){
 		return(
-			<div> 
-	
+			<div className="form">
+				
 				<input 
 				type="search"
 				name="text"
