@@ -3,23 +3,21 @@ import React, {Component} from 'react';
 class UseForm extends Component{
 	render(){
 		return(
-			<div>
-				<form onSubmit={this.props.submit}>
-					<input
-						name="name"
-						type="search"
-						placeholder="enter your name"
-						onChange={e=>this.props.handleChange(e)}
-					/>
-					<button 
-						type="submit"
-						onClick={()=>{this.props.mode('trivia')}}>
-					submit
-					</button>
-				</form>
-
-
-			</div>)
+			<div> 
+	
+				<input 
+				type="search"
+				name="text"
+				placeholder="enter your name"
+				value={this.props.input}
+				onChange={e=>this.props.handleChange(e)}/>
+				<button
+				type="submit" 
+				value="Submit"
+				onClick= {()=> this.props.handleSaveItem('super')}
+				>Play</button>
+			</div>
+			)
 	}
 }
 

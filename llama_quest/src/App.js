@@ -3,67 +3,54 @@ import './App.css';
 import data from './data/questionare'
 import UseForm from './components/Useform';
 import QuestionContainer from './components/QuestionContainer'
+import Winner from './components/Winner'
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.State ={
-      mode:'user', 
-      search:'',
-      user:[],
-      data:[], 
-      answer:[], 
-      answerNumber:''
-    }
+    this.state = {
+      text: '',
+      inputText: '',
+      mode:'view'};
+    
   }
 
-  handleChange(input, mode){
+ handleChange(input){
     const target = input.target, 
     value = target.value,
     name= target.name;
     this.setState({
-      [name]:value
+      [name]:value,
     })    
   }
 
-
-  handleSubmit(submit){
-    submit.preventDefault();
-  }
-  modeChanger(mode){
-    let modetype =[ "trivia","winner","user"]
-
-    modetype.forEach((e)=>{
-      if(mode === e){
-        this.setState({
-           mode: e
-        })
-      }
-    })
-    // if (mode === "trivia"){
-    //   this.setState({
-    //   mode:"trivia"
-    //   })
-    // }else if(mode === "winner"){
-    //   this.setState({
-    //   mode:"winner"
-    //   })
-    // }else{
-    //   this.setState({
-    //   mode:"user"
-    //   })
-    // }
-    console.log(this.state.mode)
+  handleMode(mode) {
+    console.log(mode);
+    this.setState({mode: mode});
   }
 
-  render() {
-    return (
-      <div className="App">
+  
+  renderView() {
+    if(this.state.mode === 'view') {
+      return (
         <UseForm
-        handleChange={this.handleChange.bind(this)}
-        submit={this.handleSubmit.bind(this)}
-        mode={this.modeChanger.bind(this)}
-        />
+          value={this.state.text}
+          handleSaveItem={this.handleMode.bind(this)}
+          handleChange={this.handleChange.bind(this)}/>
+         
+      );
+    } else {
+      return (
+         <QuestionContainer/>
+          
+      );
+    }
+  }
+  
+  render () {
+    return (
+      <div>
+        {this.renderView()}
       </div>
     );
   }
